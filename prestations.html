@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prestations & Tarifs — Benjamin Baticle</title>
+  <meta name="description" content="Profilage physiologique par lactatémie et puissance critique (109€) et coaching cyclisme personnalisé (60€/mois). Entraîne-toi avec tes seuils réels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0c0c0e;
+      --bg2:       #111115;
+      --card:      #16161c;
+      --accent:    #e8420a;
+      --accent2:   #ff7a1a;
+      --light:     #f0ede8;
+      --muted:     #7a7880;
+      --border:    rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(12,12,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--light); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 9rem 5vw 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,66,10,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+    }
+    .page-subtitle {
+      margin: 1.5rem auto 0;
+      max-width: 55ch;
+      color: rgba(240,237,232,0.7);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ─── PRICING SECTION ─── */
+    .pricing {
+      padding: 3rem 5vw 6rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+    }
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.8rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .price-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .price-tag-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.8rem;
+    }
+    .price-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      line-height: 1.05;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.2rem;
+    }
+    .price-amount {
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .price-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .price-period {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .price-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .price-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 0 1.8rem;
+    }
+    .price-includes-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .price-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 2.5rem;
+      flex-grow: 1;
+    }
+    .price-list li {
+      display: flex;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: rgba(240,237,232,0.85);
+    }
+    .price-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      text-align: center;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,66,10,0.4);
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .process {
+      background: var(--bg2);
+      padding: 6rem 5vw;
+    }
+    .process-inner { max-width: 1000px; margin: 0 auto; }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 3rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .step {
+      position: relative;
+    }
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: rgba(232,66,10,0.25);
+      line-height: 1;
+    }
+    .step-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 0.5rem 0 0.6rem;
+    }
+    .step p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      padding: 6rem 5vw;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(232,66,10,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      letter-spacing: 0.03em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .final-cta p {
+      color: rgba(240,237,232,0.7);
+      max-width: 50ch;
+      margin: 0 auto 2.2rem;
+      position: relative;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 850px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+    }
+    @media (max-width: 500px) {
+      .steps { grid-template-columns: 1fr; }
+      .nav-links { gap: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">B.<span>B</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#apropos">À propos</a></li>
+      <li><a href="prestations.html" class="active">Prestations</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="page-header">
+    <p class="page-eyebrow">Prestations & Tarifs</p>
+    <h1 class="page-title">Investis dans tes données,<br>pas dans des suppositions</h1>
+    <p class="page-subtitle">
+      Deux prestations complémentaires : un profilage physiologique complet pour connaître tes seuils réels, et un accompagnement sur la durée pour transformer ces données en performance.
+    </p>
+  </header>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="pricing-grid">
+
+      <!-- CARD 1 : MESURE PHYSIOLOGIQUE -->
+      <div class="price-card">
+        <p class="price-tag-label">Mesure physiologique</p>
+        <h2 class="price-name">Profilage<br>lactatémique<br>& puissance critique</h2>
+        <div class="price-amount">
+          <span class="price-number">109€</span>
+          <span class="price-period">/ test</span>
+        </div>
+        <p class="price-note">Prestation ponctuelle · environ 2h sur place</p>
+        <div class="price-divider"></div>
+        <p class="price-includes-title">Ce qui est inclus</p>
+        <ul class="price-list">
+          <li>Test lactatémique par paliers de 8 min au Lactate Plus</li>
+          <li>Tests de puissance critique du sprint au record de l'heure</li>
+          <li>Détermination de tes seuils LT1 et LT2</li>
+          <li>Mesure de ta VLaMax et identification de ton profil (rouleur, puncheur, sprinter)</li>
+          <li>Test réalisé sur ton propre vélo, en conditions réelles</li>
+          <li>Zones d'entraînement personnalisées (puissance et fréquence cardiaque)</li>
+          <li>Interprétation complète des résultats</li>
+        </ul>
+        <a href="index.html#contact" class="btn btn-primary">Réserver un test</a>
+      </div>
+
+      <!-- CARD 2 : COACHING -->
+      <div class="price-card">
+        <p class="price-tag-label">Accompagnement</p>
+        <h2 class="price-name">Coaching<br>cyclisme<br>personnalisé</h2>
+        <div class="price-amount">
+          <span class="price-number">60€</span>
+          <span class="price-period">/ mois</span>
+        </div>
+        <p class="price-note">Suivi continu · sans engagement de durée</p>
+        <div class="price-divider"></div>
+        <p class="price-includes-title">Ce qui est inclus</p>
+        <ul class="price-list">
+          <li>Plan d'entraînement personnalisé selon tes objectifs</li>
+          <li>Programmation calibrée sur tes seuils physiologiques réels</li>
+          <li>Analyse régulière de tes séances</li>
+          <li>Ajustements en continu selon ta progression et ta forme</li>
+          <li>Adaptation à tes contraintes de vie et tes disponibilités</li>
+          <li>Suivi réactif et accompagnement de proximité</li>
+          <li>Conseil sur la récupération et la planification de saison</li>
+        </ul>
+        <a href="index.html#contact" class="btn btn-primary">Démarrer le coaching</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="process">
+    <div class="process-inner">
+      <p class="section-tag">Comment ça se passe</p>
+      <h2 class="section-title">Du test à la performance</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-title">Premier contact</div>
+          <p>On échange sur ton niveau, tes objectifs et ton contexte. Le premier échange est sans engagement.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-title">Le test</div>
+          <p>Environ 2h sur ton vélo. On mesure tes seuils, ta VLaMax et ta puissance critique.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-title">L'analyse</div>
+          <p>Je t'explique tes données, ton profil métabolique et tes zones d'entraînement précises.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-title">Le suivi</div>
+          <p>Avec le coaching, on transforme ces données en un plan concret, ajusté à ta vie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <h2>Prêt à connaître tes vrais chiffres ?</h2>
+    <p>Que tu veuilles juste un test ponctuel ou un accompagnement complet, on part toujours de la même base : des données réelles, pas des estimations.</p>
+    <a href="index.html#contact" class="btn btn-primary">Me contacter</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Benjamin <span>Baticle</span></div>
+    <p>Cyclisme · Profilage Lactatémique · Puissance Critique</p>
+    <p style="color:var(--muted)">© 2026 — Tous droits réservés</p>
+  </footer>
+
+</body>
+</html>
