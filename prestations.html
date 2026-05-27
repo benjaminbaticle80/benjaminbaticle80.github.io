@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Prestations & Tarifs — Benjamin Baticle</title>
-  <meta name="description" content="Profilage physiologique par lactatémie et puissance critique (109€) et coaching cyclisme personnalisé (60€/mois). Entraîne-toi avec tes seuils réels." />
+  <meta name="description" content="Profilage lactatémique complet (109€) et coaching cyclisme personnalisé avec puissance critique sur intervals.icu (60€/mois). Entraîne-toi avec tes seuils réels." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
@@ -220,9 +221,195 @@
       box-shadow: 0 8px 30px rgba(232,66,10,0.4);
     }
 
+    /* ─── CRITICAL POWER SECTION ─── */
+    .cp-section {
+      padding: 6rem 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .cp-intro { max-width: 60ch; margin-bottom: 3.5rem; }
+    .cp-intro .section-title { margin-bottom: 1.5rem; }
+    .cp-intro p {
+      font-size: 1.08rem;
+      color: rgba(240,237,232,0.8);
+      line-height: 1.8;
+    }
+    .cp-intro strong { color: var(--accent2); font-weight: 600; }
+
+    .cp-concepts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .cp-concept {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+    }
+    .cp-concept-symbol {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.8rem;
+    }
+    .cp-concept-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .cp-concept p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+
+    .cp-chart-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+    }
+    .cp-chart-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .cp-chart-sub {
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .cp-chart svg { width: 100%; height: auto; display: block; }
+    .cp-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .cp-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cp-legend-swatch { width: 16px; height: 3px; border-radius: 2px; }
+
+    .cp-calib-title { margin-bottom: 2rem; }
+    .cp-calib-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 3rem;
+    }
+    .cp-calib-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .cp-calib-item .num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .cp-calib-item h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .cp-calib-item p { font-size: 0.92rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── INTERVALS.ICU SECTION ─── */
+    .icu-section {
+      background: var(--bg2);
+      padding: 6rem 5vw;
+    }
+    .icu-inner { max-width: 1000px; margin: 0 auto; }
+    .icu-intro { max-width: 60ch; margin-bottom: 3.5rem; }
+    .icu-intro .section-title { margin-bottom: 1.5rem; }
+    .icu-intro p {
+      font-size: 1.05rem;
+      color: rgba(240,237,232,0.8);
+      line-height: 1.8;
+    }
+    .icu-intro strong { color: var(--accent2); font-weight: 600; }
+
+    .icu-feature { margin-bottom: 3.5rem; }
+    .icu-feature:last-child { margin-bottom: 0; }
+    .icu-feature-head {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: 1.2rem;
+    }
+    .icu-feature-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .icu-feature-head h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .icu-feature-head p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 65ch;
+    }
+    .icu-shot {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+    }
+    .icu-shot-bar {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      padding: 10px 14px;
+      background: #1c1c22;
+      border-bottom: 1px solid var(--border);
+    }
+    .icu-shot-bar span {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #3a3a42;
+    }
+    .icu-shot-bar .url {
+      margin-left: 10px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .icu-shot img { width: 100%; height: auto; display: block; }
+
     /* ─── HOW IT WORKS ─── */
     .process {
-      background: var(--bg2);
+      background: var(--bg);
       padding: 6rem 5vw;
     }
     .process-inner { max-width: 1000px; margin: 0 auto; }
@@ -246,9 +433,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
-    .step {
-      position: relative;
-    }
+    .step { position: relative; }
     .step-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 3rem;
@@ -268,6 +453,7 @@
     /* ─── FINAL CTA ─── */
     .final-cta {
       padding: 6rem 5vw;
+      background: var(--bg2);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -315,10 +501,13 @@
     @media (max-width: 850px) {
       .pricing-grid { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+      .cp-concepts { grid-template-columns: 1fr; }
+      .cp-calib-grid { grid-template-columns: 1fr; gap: 1.4rem; }
     }
     @media (max-width: 500px) {
       .steps { grid-template-columns: 1fr; }
       .nav-links { gap: 1.3rem; }
+      .cp-chart-wrap { padding: 1.5rem 1rem; }
     }
   </style>
 </head>
@@ -339,7 +528,7 @@
     <p class="page-eyebrow">Prestations & Tarifs</p>
     <h1 class="page-title">Investis dans tes données,<br>pas dans des suppositions</h1>
     <p class="page-subtitle">
-      Deux prestations complémentaires : un profilage physiologique complet pour connaître tes seuils réels, et un accompagnement sur la durée pour transformer ces données en performance.
+      Deux prestations complémentaires : un profilage lactatémique pour connaître tes seuils réels, et un accompagnement sur la durée pour transformer ces données en performance.
     </p>
   </header>
 
@@ -350,7 +539,7 @@
       <!-- CARD 1 : MESURE PHYSIOLOGIQUE -->
       <div class="price-card">
         <p class="price-tag-label">Mesure physiologique</p>
-        <h2 class="price-name">Profilage<br>lactatémique<br>& puissance critique</h2>
+        <h2 class="price-name">Profilage<br>lactatémique<br>complet</h2>
         <div class="price-amount">
           <span class="price-number">109€</span>
           <span class="price-period">/ test</span>
@@ -360,12 +549,11 @@
         <p class="price-includes-title">Ce qui est inclus</p>
         <ul class="price-list">
           <li>Test lactatémique par paliers de 8 min au Lactate Plus</li>
-          <li>Tests de puissance critique du sprint au record de l'heure</li>
           <li>Détermination de tes seuils LT1 et LT2</li>
           <li>Mesure de ta VLaMax et identification de ton profil (rouleur, puncheur, sprinter)</li>
-          <li>Test réalisé sur ton propre vélo, en conditions réelles</li>
-          <li>Zones d'entraînement personnalisées (puissance et fréquence cardiaque)</li>
+          <li>Test réalisé sur ton propre vélo, sur home-trainer (dans mon local)</li>
           <li>Interprétation complète des résultats</li>
+          <li>Détermination de tes zones physiologiques, avec des propositions de séances adaptées à tes objectifs pour débuter en autonomie</li>
         </ul>
         <a href="index.html#contact" class="btn btn-primary">Réserver un test</a>
       </div>
@@ -382,15 +570,196 @@
         <div class="price-divider"></div>
         <p class="price-includes-title">Ce qui est inclus</p>
         <ul class="price-list">
+          <li>Suivi et planification sur intervals.icu, plateforme d'analyse dédiée</li>
           <li>Plan d'entraînement personnalisé selon tes objectifs</li>
           <li>Programmation calibrée sur tes seuils physiologiques réels</li>
-          <li>Analyse régulière de tes séances</li>
+          <li>Profilage par puissance critique inclus, sans supplément</li>
+          <li>Analyse de tes séances et suivi continu de ta charge</li>
           <li>Ajustements en continu selon ta progression et ta forme</li>
           <li>Adaptation à tes contraintes de vie et tes disponibilités</li>
-          <li>Suivi réactif et accompagnement de proximité</li>
           <li>Conseil sur la récupération et la planification de saison</li>
         </ul>
         <a href="index.html#contact" class="btn btn-primary">Démarrer le coaching</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CRITICAL POWER CALIBRATION -->
+  <section class="cp-section">
+    <div class="cp-intro">
+      <p class="section-tag">La méthode</p>
+      <h2 class="section-title">Le calibrage par<br>puissance critique</h2>
+      <p>
+        La plupart des plans d'entraînement reposent sur un pourcentage de FTP — une estimation unique, souvent tirée d'un seul test de 20 minutes. La puissance critique va plus loin : en mesurant ta puissance sur une <strong>gamme complète de durées</strong>, du sprint au record de l'heure, on reconstruit ta courbe puissance-durée et on en extrait deux paramètres qui décrivent vraiment ta physiologie — ta <strong>puissance critique (CP)</strong> et ta <strong>capacité de travail anaérobie (W′)</strong>. Cette analyse est <strong>incluse dans le coaching</strong>, sans supplément.
+      </p>
+    </div>
+
+    <!-- 3 CONCEPTS -->
+    <div class="cp-concepts">
+      <div class="cp-concept">
+        <div class="cp-concept-symbol">CP</div>
+        <div class="cp-concept-title">La frontière</div>
+        <p>La plus haute intensité que tu peux tenir en régime métabolique stable. En dessous, l'effort reste soutenable longtemps ; au-dessus, la fatigue devient inéluctable. C'est ta vraie limite — pas une moyenne arbitraire.</p>
+      </div>
+      <div class="cp-concept">
+        <div class="cp-concept-symbol">W′</div>
+        <div class="cp-concept-title">La réserve</div>
+        <p>La quantité de travail que tu peux produire au-dessus de ta CP : ton réservoir pour les attaques, les bosses et les sprints. Une fois vidé, il faut repasser sous la CP pour le recharger.</p>
+      </div>
+      <div class="cp-concept">
+        <div class="cp-concept-symbol">↗</div>
+        <div class="cp-concept-title">Ton empreinte</div>
+        <p>En reliant tes puissances maximales sur chaque durée, on obtient une courbe qui n'appartient qu'à toi. Sa forme révèle ton profil : plutôt explosif (gros W′) ou plutôt diesel (CP élevée).</p>
+      </div>
+    </div>
+
+    <!-- CHART -->
+    <div class="cp-chart-wrap">
+      <p class="cp-chart-title">Ta courbe puissance-durée</p>
+      <p class="cp-chart-sub">Puissance maximale soutenable selon la durée de l'effort — du sprint (5″) au record de l'heure (60′)</p>
+      <div class="cp-chart">
+        <svg viewBox="0 0 800 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Courbe puissance-durée illustrant la puissance critique et le W prime">
+          <!-- Axes -->
+          <line x1="75" y1="40" x2="75" y2="315" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+          <line x1="75" y1="315" x2="765" y2="315" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+
+          <!-- W' shaded area (between curve and CP line) -->
+          <path d="M 75,55 C 150,155 220,245 320,283 C 440,305 600,309 765,310 L 765,315 L 75,315 Z"
+                fill="rgba(232,66,10,0.13)"/>
+
+          <!-- CP asymptote -->
+          <line x1="75" y1="315" x2="765" y2="315" stroke="#e8420a" stroke-width="2" stroke-dasharray="6 5"/>
+
+          <!-- Power-duration curve -->
+          <path d="M 75,55 C 150,155 220,245 320,283 C 440,305 600,309 765,310"
+                fill="none" stroke="#ff7a1a" stroke-width="3" stroke-linecap="round"/>
+
+          <!-- Test points -->
+          <circle cx="75"  cy="55"  r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+          <circle cx="261" cy="258" r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+          <circle cx="334" cy="286" r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+          <circle cx="501" cy="306" r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+          <circle cx="646" cy="309" r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+          <circle cx="760" cy="310" r="5" fill="#f0ede8" stroke="#e8420a" stroke-width="2"/>
+
+          <!-- W' label -->
+          <text x="200" y="230" fill="#ff7a1a" font-family="Bebas Neue, sans-serif" font-size="26" letter-spacing="1">W′</text>
+
+          <!-- CP label -->
+          <text x="700" y="305" fill="#e8420a" font-family="Bebas Neue, sans-serif" font-size="22" letter-spacing="1">CP</text>
+
+          <!-- Axis titles -->
+          <text x="420" y="360" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="14" letter-spacing="2" text-anchor="middle">DURÉE DE L'EFFORT</text>
+          <text x="22" y="180" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="14" letter-spacing="2" text-anchor="middle" transform="rotate(-90 22 180)">PUISSANCE</text>
+
+          <!-- X tick labels -->
+          <text x="75"  y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">5″</text>
+          <text x="261" y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">30″</text>
+          <text x="334" y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">1′</text>
+          <text x="501" y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">5′</text>
+          <text x="646" y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">20′</text>
+          <text x="760" y="333" fill="#7a7880" font-family="Barlow Condensed, sans-serif" font-size="12" text-anchor="middle">60′</text>
+        </svg>
+      </div>
+      <div class="cp-legend">
+        <div class="cp-legend-item"><span class="cp-legend-swatch" style="background:#ff7a1a"></span>Courbe puissance-durée</div>
+        <div class="cp-legend-item"><span class="cp-legend-swatch" style="background:#e8420a"></span>Puissance critique (CP)</div>
+        <div class="cp-legend-item"><span class="cp-legend-swatch" style="background:rgba(232,66,10,0.4)"></span>Réserve anaérobie (W′)</div>
+      </div>
+    </div>
+
+    <!-- CALIBRATION -->
+    <div>
+      <h3 class="section-title cp-calib-title" style="font-size:clamp(2rem,4vw,3rem)">Comment je calibre tes séances</h3>
+      <div class="cp-calib-grid">
+        <div class="cp-calib-item">
+          <span class="num">01</span>
+          <div>
+            <h4>Des zones qui t'appartiennent</h4>
+            <p>Tes zones d'endurance, de seuil et de VO2max sont définies par rapport à TA CP, pas à un %FTP générique. Chaque intensité tombe au bon endroit.</p>
+          </div>
+        </div>
+        <div class="cp-calib-item">
+          <span class="num">02</span>
+          <div>
+            <h4>Des intervalles dosés au W′</h4>
+            <p>Pour le travail au-dessus de la CP, on dimensionne la durée et la récupération des intervalles à partir de ton W′ — assez dur pour progresser, jamais au point de saboter la séance.</p>
+          </div>
+        </div>
+        <div class="cp-calib-item">
+          <span class="num">03</span>
+          <div>
+            <h4>La bonne intensité, au bon moment</h4>
+            <p>Endurance franchement sous la CP, seuil calé juste autour, VO2max au-dessus avec un W′ maîtrisé : chaque séance vise une cible métabolique claire.</p>
+          </div>
+        </div>
+        <div class="cp-calib-item">
+          <span class="num">04</span>
+          <div>
+            <h4>Une progression mesurable</h4>
+            <p>Quand ta CP monte ou que ta courbe se redresse, on le voit. L'entraînement s'ajuste sur des données concrètes, pas sur des sensations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERVALS.ICU SHOWCASE -->
+  <section class="icu-section">
+    <div class="icu-inner">
+
+      <div class="icu-intro">
+        <p class="section-tag">La plateforme</p>
+        <h2 class="section-title">Ton coaching,<br>piloté sur intervals.icu</h2>
+        <p>
+          Le coaching s'appuie sur <strong>intervals.icu</strong>, une plateforme d'analyse de référence pour les sportifs d'endurance. Tu y retrouves au même endroit ta planification, le suivi de ta charge et l'évolution de ton profil de puissance — pour un accompagnement <strong>transparent et fondé sur des données</strong>, accessible à tout moment depuis ton ordinateur ou ton téléphone.
+        </p>
+      </div>
+
+      <!-- FEATURE 01 : PLANIFICATION -->
+      <div class="icu-feature">
+        <div class="icu-feature-head">
+          <span class="icu-feature-num">01</span>
+          <div>
+            <h4>La planification</h4>
+            <p>Chaque semaine, ton plan d'entraînement est construit et ajusté directement sur intervals.icu. Séances détaillées, objectifs hebdomadaires et structure jour par jour — tu sais exactement ce que tu fais et pourquoi.</p>
+          </div>
+        </div>
+        <figure class="icu-shot">
+          <div class="icu-shot-bar"><span></span><span></span><span></span><span class="url">intervals.icu/activities</span></div>
+          <img src="intervals-planification.jpg" alt="Planification hebdomadaire sur intervals.icu — séances détaillées et objectifs de la semaine" loading="lazy" />
+        </figure>
+      </div>
+
+      <!-- FEATURE 02 : SUIVI DE CHARGE -->
+      <div class="icu-feature">
+        <div class="icu-feature-head">
+          <span class="icu-feature-num">02</span>
+          <div>
+            <h4>Le suivi de charge</h4>
+            <p>Ta charge d'entraînement, ta fatigue et ta forme sont suivies en continu. On dose les semaines de travail et de récupération pour progresser sans tomber dans le surentraînement — un équilibre essentiel pour durer.</p>
+          </div>
+        </div>
+        <figure class="icu-shot">
+          <div class="icu-shot-bar"><span></span><span></span><span></span><span class="url">intervals.icu/fitness</span></div>
+          <img src="intervals-charge.jpg" alt="Suivi de la condition physique, fatigue et forme sur intervals.icu" loading="lazy" />
+        </figure>
+      </div>
+
+      <!-- FEATURE 03 : PROFIL DE PUISSANCE -->
+      <div class="icu-feature">
+        <div class="icu-feature-head">
+          <span class="icu-feature-num">03</span>
+          <div>
+            <h4>Le profil de puissance</h4>
+            <p>Ta courbe puissance-durée est analysée sur toute la gamme de durées (de 1 seconde à plusieurs heures) et comparée saison après saison. C'est là qu'on lit ta puissance critique, ton W′ — et qu'on mesure objectivement ta progression.</p>
+          </div>
+        </div>
+        <figure class="icu-shot">
+          <div class="icu-shot-bar"><span></span><span></span><span></span><span class="url">intervals.icu/power</span></div>
+          <img src="intervals-puissance.jpg" alt="Profil de puissance et courbe puissance-durée sur intervals.icu" loading="lazy" />
+        </figure>
       </div>
 
     </div>
@@ -410,7 +779,7 @@
         <div class="step">
           <div class="step-num">02</div>
           <div class="step-title">Le test</div>
-          <p>Environ 2h sur ton vélo. On mesure ton seuil lactique 1 (LT1) et ton seuil lactique 2 (LT2 ~FTP), ta VLaMax et ta capacité à recycler les lactates de manière active .</p>
+          <p>Environ 2h sur ton vélo. On mesure ton seuil lactique 1 (LT1) et ton seuil lactique 2 (LT2 ~FTP), ta VLaMax et ta capacité à recycler les lactates de manière active.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
