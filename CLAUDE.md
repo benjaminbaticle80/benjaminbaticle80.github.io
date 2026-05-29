@@ -84,6 +84,7 @@ Ce fichier sert de mémoire de projet pour toute session Claude Code. Lis-le au 
 - Honnête et précis : pas de promesses gonflées, pas de superlatifs vides  
 - Pédagogique : on explique les concepts physiologiques (CP, W′, LT1/LT2) en restant accessible  
 - Vocabulaire spécifique préservé : LT1, LT2, VLaMax, CP, W′, puissance critique, FTP
+- **Typographie** : aucun tiret cadratin (U+2014) dans le contenu HTML. On utilise toujours le tiret classique (-) entouré d'espaces s'il sert de séparateur de phrase. Cette règle s'applique à tout nouveau contenu rédigé.
 
 ---
 
