@@ -65,9 +65,10 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
       align-items: center;
-      padding: 7rem 5vw 4rem;
+      padding: 7rem 4vw 4rem;
       position: relative;
       overflow: hidden;
     }
@@ -141,18 +142,19 @@
     }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
 
-    .hero-visual { position: relative; z-index: 1; display: flex; justify-content: center; }
+    .hero-visual {
+      position: relative; z-index: 1;
+      display: flex; justify-content: center; align-items: center;
+    }
     .hero-photo-wrap {
       position: relative;
-      max-width: 460px;
-      opacity: 0;
-      animation: fadeIn 1s 0.8s forwards;
+      width: 100%;
     }
     .hero-photo {
       width: 100%;
-      height: 520px;        /* ← ajoute cette ligne */
-      object-fit: cover;    /* ← ajoute cette ligne */
-      object-position: center top;  /* ← ajoute cette ligne */
+      height: clamp(420px, 55vh, 580px);
+      object-fit: cover;
+      object-position: center top;
       border-radius: 6px;
       border: 1px solid var(--border);
       filter: grayscale(15%) contrast(1.05);
