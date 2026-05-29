@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Benjamin Baticle Coaching</title>
+  <meta name="description" content="Toutes les réponses à tes questions sur le coaching cyclisme, le profilage physiologique et les tarifs. Tu n'as pas à être compétiteur pour progresser." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #0c0c0e;
+      --bg2:       #111115;
+      --card:      #16161c;
+      --accent:    #e8420a;
+      --accent2:   #ff7a1a;
+      --light:     #f0ede8;
+      --muted:     #7a7880;
+      --border:    rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(12,12,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--light); }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 9rem 5vw 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,66,10,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+    .page-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 0.04em;
+    }
+    .page-subtitle {
+      margin: 1.5rem auto 0;
+      max-width: 55ch;
+      color: rgba(240,237,232,0.7);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ─── SECTIONS ─── */
+    section {
+      padding: 5rem 5vw;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── FAQ ITEMS ─── */
+    .faq-group {
+      margin-bottom: 3rem;
+    }
+    .faq-group-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 2px solid transparent;
+      margin-bottom: 0.6rem;
+      transition: border-color 0.2s;
+    }
+    details[open] {
+      border-left-color: var(--accent);
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--light);
+      user-select: none;
+      gap: 1rem;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    .faq-body {
+      padding: 0 1.4rem 1.4rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.1rem;
+      color: rgba(240,237,232,0.75);
+      font-size: 0.97rem;
+      line-height: 1.75;
+    }
+    .faq-body p + p { margin-top: 0.8rem; }
+    .faq-body strong { color: var(--light); font-weight: 600; }
+    .faq-body .hi { color: var(--accent2); font-weight: 500; }
+
+    /* ─── TAGS ─── */
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      border: 1px solid rgba(255,122,26,0.3);
+      border-radius: 2px;
+      margin-right: 0.4rem;
+      margin-top: 0.8rem;
+      display: inline-block;
+    }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 5rem 5vw;
+      max-width: 100%;
+    }
+    .final-cta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .final-cta p {
+      color: rgba(240,237,232,0.65);
+      max-width: 50ch;
+      margin: 0 auto 2rem;
+      font-size: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      margin-right: 0.75rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,66,10,0.4);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 5vw;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.1em;
+      color: var(--light);
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { margin-top: 0.3rem; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      section { padding: 3.5rem 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="index.html">Benjamin <span>Baticle</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="prestations.html">Prestations</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="page-eyebrow">Questions fréquentes</p>
+    <h1 class="page-title">Tu as des questions.<br>Voici les réponses.</h1>
+    <p class="page-subtitle">Les doutes avant de se lancer sont normaux. Voici les vrais freins que j'entends le plus souvent – et ce que j'y réponds honnêtement.</p>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section>
+
+    <!-- PROFIL & NIVEAU -->
+    <div class="faq-group">
+      <p class="faq-group-label">Profil & niveau</p>
+
+      <details>
+        <summary>C'est pour moi ? Je fais 5h de vélo par semaine, je ne suis pas en compétition.</summary>
+        <div class="faq-body">
+          <p>Oui, absolument. Ma méthode s'adresse aussi bien au <strong>cyclosportif amateur</strong> qu'au coureur élite. L'objectif n'est pas la compétition – c'est de progresser et de dépasser tes propres limites.</p>
+          <p>Certains trouvent leur motivation dans la compétition, d'autres dans le dépassement personnel ou la préparation d'un événement. Les deux fonctionnent. Ce qui compte, c'est d'avoir un <span class="hi">objectif clair</span> qui te donne envie de te lever le matin.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Faut-il déjà avoir une base d'entraînement structurée ?</summary>
+        <div class="faq-body">
+          <p>Pas nécessairement. On peut construire une structure ensemble à partir d'une pratique informelle. En revanche, une certaine régularité – même sans plan – facilite les premières semaines de suivi.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Faut-il faire de la compétition pour que ça serve à quelque chose ?</summary>
+        <div class="faq-body">
+          <p>Non. Mais se confronter à un événement – course, cyclosportive, gran fondo – <strong>accélère vraiment la progression</strong>. L'enjeu crée une pression positive qui libère des freins psychologiques difficiles à lever autrement.</p>
+          <p>Si tu n'es pas attiré par la compétition, on construit autour d'objectifs personnels qui ont du sens pour toi. Le cadre change, la méthode reste la même.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- MATÉRIEL -->
+    <div class="faq-group">
+      <p class="faq-group-label">Matériel</p>
+
+      <details>
+        <summary>Faut-il obligatoirement un capteur de puissance ?</summary>
+        <div class="faq-body">
+          <p>Un capteur de puissance change vraiment la donne – je le recommande fortement. Sans lui, un suivi uniquement à la fréquence cardiaque et au RPE demande une <strong>connaissance de soi très poussée</strong>.</p>
+          <p>Ce type de suivi sans capteur reste possible, mais uniquement avec un cycliste très expérimenté qui se connaît parfaitement. Pour les autres profils, <span class="hi">investir dans un capteur est la décision la plus rentable</span> que tu puisses prendre avant de commencer un suivi.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- RÉSULTATS -->
+    <div class="faq-group">
+      <p class="faq-group-label">Résultats & progression</p>
+
+      <details>
+        <summary>Combien de temps avant de voir des résultats concrets ?</summary>
+        <div class="faq-body">
+          <p>Ça dépend surtout de ton expérience. Et bonne nouvelle : <strong>plus ton profil est inexpérimenté, plus les progrès sont rapides et visibles</strong>.</p>
+          <p>Exemple concret : quelqu'
