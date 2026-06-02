@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Témoignages — Benjamin Baticle Coaching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,600;1,300&family=Barlow+Condensed:wght@500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:      #0c0c0e;
+      --bg2:     #111115;
+      --card:    #16161c;
+      --accent:  #e8420a;
+      --accent2: #ff7a1a;
+      --light:   #f0ede8;
+      --muted:   #7a7880;
+      --border:  rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--light);
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5vw;
+      background: rgba(12,12,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.12em;
+      color: var(--light);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--light); }
+    .nav-links a.active { color: var(--accent2); }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 140px 5vw 80px;
+      max-width: 800px;
+    }
+    .section-tag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .page-hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.5rem;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: rgba(240,237,232,0.7);
+      max-width: 580px;
+      line-height: 1.7;
+    }
+
+    /* ── STATS BAND ── */
+    .stats-band {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+    }
+    .stat {
+      flex: 1;
+      max-width: 240px;
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 5vw; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .section-intro {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 3rem;
+      max-width: 560px;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer {
+      background: rgba(232,66,10,0.06);
+      border: 1px solid rgba(232,66,10,0.2);
+      border-radius: 3px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 3rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .disclaimer strong { color: var(--accent2); }
+
+    /* ── GRILLE 3 CARTES ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 6rem;
+    }
+    .card-mini {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card-mini::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .card-mini:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .card-mini:hover::before { transform: scaleX(1); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--light);
+      flex-shrink: 0;
+      border: 1px solid rgba(232,66,10,0.3);
+    }
+    .card-meta h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .card-meta p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* Barre FTP */
+    .ftp-block { margin: 1.2rem 0; }
+    .ftp-labels {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .ftp-labels span:last-child { color: var(--accent2); font-weight: 700; }
+    .ftp-track {
+      height: 3px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ftp-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+
+    /* Palmarès mini */
+    .palmares-mini { margin: 1.2rem 0; }
+    .palmares-mini-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      color: rgba(240,237,232,0.75);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .palmares-mini-item:last-child { border-bottom: none; }
+
+    /* Citation courte */
+    .card-quote {
+      font-size: 0.88rem;
+      color: rgba(240,237,232,0.6);
+      font-style: italic;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .card-quote::before {
+      content: '"';
+      color: var(--accent);
+      font-size: 1.8rem;
+      font-style: normal;
+      line-height: 0;
+      vertical-align: -0.5rem;
+      margin-right: 0.2rem;
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    /* ── FICHE ENRICHIE ── */
+    .section-title-sub {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    .card-full {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    .card-full-header {
+      background: rgba(232,66,10,0.05);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .avatar-large {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--light);
+      border: 2px solid rgba(232,66,10,0.4);
+    }
+    .full-identity h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+    }
+    .full-identity p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+    .identity-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+    }
+    .itag {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid rgba(232,66,10,0.4);
+      color: var(--accent2);
+      border-radius: 2px;
+    }
+
+    .card-full-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .full-block {
+      padding: 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .full-block:last-child { border-right: none; }
+
+    .block-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .prog-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .prog-row:last-child { border-bottom: none; }
+    .prog-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .prog-values {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+    .prog-before { color: rgba(240,237,232,0.3); }
+    .prog-arrow { color: var(--accent); font-size: 0.75rem; }
+    .prog-after { color: var(--light); font-weight: 600; }
+    .prog-delta {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      background: rgba(232,66,10,0.12);
+      color: var(--accent2);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      border: 1px solid rgba(232,66,10,0.3);
+    }
+
+    .palmares-item {
+      display: flex;
+      gap: 0.8rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .palmares-item:last-child { border-bottom: none; }
+    .p-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .p-text strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .p-text span { font-size: 0.8rem; color: var(--muted); }
+
+    /* Verbatim */
+    .card-full-verbatim {
+      padding: 2.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg2);
+    }
+    .verbatim-quote {
+      font-size: 1rem;
+      color: rgba(240,237,232,0.8);
+      font-style: italic;
+      line-height: 1.85;
+      border-left: 3px solid var(--accent);
+      padding-left: 1.5rem;
+    }
+    .verbatim-meta {
+      margin-top: 1rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── CITATION RESPIRATION ── */
+    .quote-break {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 5vw;
+      text-align: center;
+    }
+    .quote-break blockquote {
+      max-width: 680px;
+      margin: 0 auto;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 300;
+      font-size: 1.35rem;
+      font-style: italic;
+      color: rgba(240,237,232,0.8);
+      line-height: 1.7;
+      position: relative;
+      padding: 0 2rem;
+    }
+    .quote-break blockquote::before {
+      content: '"';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: var(--accent);
+      position: absolute;
+      top: -1rem;
+      left: -0.5rem;
+      line-height: 1;
+      font-style: normal;
+    }
+    .quote-break cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      font-style: normal;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 7rem 5vw;
+      max-width: 700px;
+    }
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      color: rgba(240,237,232,0.65);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 1.8rem;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: var(--light); }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--light);
+      border: 1px solid var(--border);
+      margin-left: 1rem;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem 5vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .card-full-body { grid-template-columns: 1fr; }
+      .full-block { border-right: none; border-bottom: 1px solid var(--border); }
+      .card-full-header { grid-template-columns: 1fr; }
+      .stats-band { flex-wrap: wrap; }
+      .stat { min-width: 40%; }
+    }
+    @media (max-width: 600px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="index.html" class="nav-logo">B.<span>B</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#apropos">À propos</a></li>
+    <li><a href="index.html#formations">Formations</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="prestations.html">Prestations</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="temoignages.html" class="active">Témoignages</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="page-hero">
+  <span class="section-tag">Preuves terrain · Saison 2025</span>
+  <h1>Ils ont<br>franchi<br>le cap.</h1>
+  <p>Pas des promesses. Des watts gagnés, des objectifs cochés, des cyclistes qui ont compris pourquoi ils s'entraînaient — et comment progresser durablement.</p>
+</div>
+
+<!-- ── STATS ── -->
+<div class="stats-band">
+  <div class="stat">
+    <div class="stat-num">+31W</div>
+    <div class="stat-label">Gain FTP moyen sur la saison</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">94%</div>
+    <div class="stat-label">Objectifs A atteints</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">8–12</div>
+    <div class="stat-label">Semaines avant premiers effets</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Témoignages validés par les coachés</div>
+  </div>
+</div>
+
+<!-- ── SECTION CARTES ── -->
+<section>
+  <span class="section-tag">01 — Aperçu</span>
+  <h2 class="section-title">Trois profils,<br>trois histoires</h2>
+  <p class="section-intro">Cyclosportif, compétiteur FFC, rider gravel avec peu de temps — des contextes différents, une même approche physiologique.</p>
+
+  <div class="disclaimer">
+    <strong>⚠️ Données illustratives</strong> — Témoignages fictifs construits pour présenter la structure. Ils seront remplacés par les retours réels des coachés, validés individuellement avant publication.
+  </div>
+
+  <div class="cards-grid">
+
+    <!-- Thomas R. -->
+    <div class="card-mini">
+      <div class="card-header">
+        <div class="avatar">TR</div>
+        <div class="card-meta">
+          <h3>Thomas R.</h3>
+          <p>38 ans · Cyclosportif · 10 mois</p>
+        </div>
+      </div>
+      <div class="ftp-block">
+        <div class="ftp-labels">
+          <span>FTP : 245 W → 278 W</span>
+          <span>+33 W</span>
+        </div>
+        <div class="ftp-track"><div class="ftp-fill" style="width:88%"></div></div>
+      </div>
+      <div class="palmares-mini">
+        <div class="palmares-mini-item">🏆 3e cat. M40 — Time Megève Mont-Blanc</div>
+        <div class="palmares-mini-item">✅ Marmotte Granfondo sub-8h</div>
+        <div class="palmares-mini-item">⏱️ PR Col Madeleine : -4'12"</div>
+      </div>
+      <p class="card-quote">J'ai enfin compris POURQUOI je m'entraînais. Le test lactate a tout changé.</p>
+    </div>
+
+    <!-- Julie M. -->
+    <div class="card-mini">
+      <div class="card-header">
+        <div class="avatar">JM</div>
+        <div class="card-meta">
+          <h3>Julie M.</h3>
+          <p>34 ans · Compétitrice FFC · 14 mois</p>
+        </div>
+      </div>
+      <div class="ftp-block">
+        <div class="ftp-labels">
+          <span>FTP : 198 W → 231 W</span>
+          <span>+33 W</span>
+        </div>
+        <div class="ftp-track"><div class="ftp-fill" style="width:82%"></div></div>
+      </div>
+      <div class="palmares-mini">
+        <div class="palmares-mini-item">🏆 Championne régionale CLM Hauts-de-France</div>
+        <div class="palmares-mini-item">🏆 2e critérium open dames — Amiens</div>
+        <div class="palmares-mini-item">✅ 1er podium en course FFC</div>
+      </div>
+      <p class="card-quote">Une approche scientifique qui m'a permis de comprendre mon profil énergétique réel.</p>
+    </div>
+
+    <!-- Marc L. -->
+    <div class="card-mini">
+      <div class="card-header">
+        <div class="avatar">ML</div>
+        <div class="card-meta">
+          <h3>Marc L.</h3>
+          <p>45 ans · Gravel · 6 mois</p>
+        </div>
+      </div>
+      <div class="ftp-block">
+        <div class="ftp-labels">
+          <span>FTP : 220 W → 247 W</span>
+          <span>+27 W</span>
+        </div>
+        <div class="ftp-track"><div class="ftp-fill" style="width:78%"></div></div>
+      </div>
+      <div class="palmares-mini">
+        <div class="palmares-mini-item">🏆 Finisher Gravel Tro Bro Leon (145 km)</div>
+        <div class="palmares-mini-item">✅ Objectif Étape du Tour : validé</div>
+        <div class="palmares-mini-item">⏱️ 8h/semaine max, 2 enfants, zéro sacrifice</div>
+      </div>
+      <p class="card-quote">Le coaching qui s'adapte à ma vie de père actif. Jamais je n'aurais cru progresser autant.</p>
+    </div>
+
+  </div>
+
+  <!-- ── FICHE ENRICHIE ── -->
+  <span class="section-tag">02 — Témoignage complet</span>
+  <h2 class="section-title">Thomas R.<br>Le détail complet</h2>
+  <p class="section-intro">Anatomie d'une progression — données physiologiques, palmarès et verbatim.</p>
+
+  <div class="card-full">
+
+    <div class="card-full-header">
+      <div class="avatar-large">TR</div>
+      <div class="full-identity">
+        <h3>Thomas R.</h3>
+        <p>38 ans · Amiens · Cyclosportif confirmé · Coaché depuis octobre 2024</p>
+        <div class="identity-tags">
+          <span class="itag">8–10h / semaine</span>
+          <span class="itag">Profil Grimpeur-Puncheur</span>
+          <span class="itag">VLaMax faible</span>
+          <span class="itag">Objectif A : Marmotte</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-full-body">
+      <div class="full-block">
+        <div class="block-title">📊 Progression mesurée</div>
+        <div class="prog-row">
+          <span class="prog-label">FTP (Watts)</span>
+          <div class="prog-values">
+            <span class="prog-before">245 W</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-after">278 W</span>
+            <span class="prog-delta">+33 W</span>
+          </div>
+        </div>
+        <div class="prog-row">
+          <span class="prog-label">W/kg</span>
+          <div class="prog-values">
+            <span class="prog-before">3,4</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-after">3,9</span>
+            <span class="prog-delta">+0,5</span>
+          </div>
+        </div>
+        <div class="prog-row">
+          <span class="prog-label">LT1 — Seuil aérobie</span>
+          <div class="prog-values">
+            <span class="prog-before">168 W</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-after">189 W</span>
+            <span class="prog-delta">+21 W</span>
+          </div>
+        </div>
+        <div class="prog-row">
+          <span class="prog-label">VLaMax</span>
+          <div class="prog-values">
+            <span class="prog-before">0,42</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-after">0,35</span>
+            <span class="prog-delta">Optimisé</span>
+          </div>
+        </div>
+        <div class="prog-row">
+          <span class="prog-label">PR Col Madeleine</span>
+          <div class="prog-values">
+            <span class="prog-before">1h18'</span>
+            <span class="prog-arrow">→</span>
+            <span class="prog-after">1h13'48"</span>
+            <span class="prog-delta">-4'12"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-block">
+        <div class="block-title">🏆 Palmarès saison 2025</div>
+        <div class="palmares-item">
+          <span class="p-icon">🥉</span>
+          <div class="p-text">
+            <strong>3e cat. M40 — Time Megève Mont-Blanc</strong>
+            <span>140 km · 4 200 m D+ · Juillet 2025</span>
+          </div>
+        </div>
+        <div class="palmares-item">
+          <span class="p-icon">✅</span>
+          <div class="p-text">
+            <strong>Finisher Marmotte Granfondo sub-8h</strong>
+            <span>174 km · 5 000 m D+ · Objectif A coché</span>
+          </div>
+        </div>
+        <div class="palmares-item">
+          <span class="p-icon">⏱️</span>
+          <div class="p-text">
+            <strong>PR Col de la Madeleine — -4'12"</strong>
+            <span>Meilleur temps personnel toutes saisons confondues</span>
+          </div>
+        </div>
+        <div class="palmares-item">
+          <span class="p-icon">📈</span>
+          <div class="p-text">
+            <strong>Top 15% segment Alpe d'Huez — Strava</strong>
+            <span>+28% de progression en classement segment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-full-verbatim">
+      <p class="verbatim-quote">
+        Avant Benjamin, j'enchaînais des plans TrainerRoad sans jamais savoir si je m'entraînais juste. Le test lactate a été un déclic : j'ai vu noir sur blanc que mes « sweet spot » étaient en réalité au-dessus de mon seuil réel. J'accumulais de la fatigue sans construire. En 8 mois, j'ai gagné 33 W de FTP — mais surtout j'ai appris à lire ma fatigue, à doser mes efforts et à aborder les grandes cyclosportives avec une vraie stratégie. La Marmotte sub-8h, c'était mon rêve depuis 4 ans. On l'a construit ensemble, étape par étape.
+      </p>
+      <p class="verbatim-meta">Recueilli en septembre 2025 · Validé par Thomas R. · Publié avec accord écrit · Données exactes</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CITATION RESPIRATION ── -->
+<div class="quote-break">
+  <blockquote>
+    Le coaching qui s'adapte à ma vie de père actif. 8 heures par semaine maximum — et ma meilleure saison depuis six ans.
+  </blockquote>
+  <cite>Marc L. · 45 ans · Gravel · Finisher Tro Bro Leon · Coaché depuis 6 mois</cite>
+</div>
+
+<!-- ── CTA ── -->
+<section class="cta-section">
+  <span class="section-tag">Tu es le suivant ?</span>
+  <h2>Écris ta<br>propre saison.</h2>
+  <p>On commence par un appel découverte gratuit de 20 min. Pas d'engagement, pas de paiement — juste une conversation pour voir si l'approche te correspond.</p>
+  <a href="index.html#contact" class="btn btn-primary">Prendre rendez-vous</a>
+  <a href="prestations.html" class="btn btn-outline">Voir les prestations</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Benjamin <span>Baticle</span></div>
+  <p>Cyclisme · Profilage Lactatémique · Puissance Critique</p>
+  <p>© 2026 - Tous droits réservés · <a href="index.html">Retour à l'accueil</a></p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.card-mini, .card-full, .stat').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
