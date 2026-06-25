@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil de puissance - Benjamin Baticle Coaching</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #0c0c0e;
+  --surface: #141417;
+  --border: #222228;
+  --border-soft: #1a1a1f;
+  --orange: #e8420a;
+  --orange-light: #ff7a1a;
+  --text: #f0f0f0;
+  --text-muted: #888;
+  --text-dim: #444;
+  --avant: #60a5fa;
+  --apres: #f97316;
+  --green: #4ade80;
+  --red: #f87171;
+  --font-title: 'Bebas Neue', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', 'Arial', sans-serif;
+  --font-data: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 14px;
+  min-height: 100vh;
+  padding: 2rem 1rem 5rem;
+}
+
+.container { max-width: 860px; margin: 0 auto; }
+
+/* ── Header ── */
+.header { margin-bottom: 2.5rem; }
+.eyebrow {
+  font-size: 11px; font-weight: 500; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 8px;
+}
+.header h1 {
+  font-family: var(--font-title); font-size: 2.8rem;
+  letter-spacing: .04em; line-height: 1; margin-bottom: 10px;
+}
+.header p { color: var(--text-muted); font-size: 13px; line-height: 1.6; max-width: 580px; }
+
+/* ── Identité ── */
+.identity { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1.5rem; }
+@media (max-width:500px) { .identity { grid-template-columns: 1fr; } }
+
+.field label {
+  display: block; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 5px;
+}
+.field input {
+  width: 100%; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text); font-family: var(--font-body);
+  font-size: 14px; padding: 8px 12px; outline: none; transition: border-color .15s;
+}
+.field input:focus { border-color: var(--orange); }
+.field input::placeholder { color: var(--text-dim); }
+
+/* ── Poids ── */
+.poids-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 6px; padding: 12px 16px; margin-bottom: 2rem;
+}
+.poids-row label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); white-space: nowrap; }
+.poids-row input {
+  width: 80px; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text); font-family: var(--font-data);
+  font-size: 16px; font-weight: 500; text-align: center; padding: 6px 8px; outline: none;
+}
+.poids-row input:focus { border-color: var(--orange); }
+.poids-row small { color: var(--text-dim); font-size: 12px; }
+#poids-warning {
+  display: none; font-size: 11px; color: #facc15;
+  background: #2a2510; border: 1px solid #4a3d10; border-radius: 4px;
+  padding: 4px 10px; margin-left: 4px;
+}
+
+/* ── Section title ── */
+.section-title {
+  font-family: var(--font-title); font-size: 1.35rem; letter-spacing: .06em;
+  margin-bottom: 1rem; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 10px;
+}
+.section-title span {
+  font-family: var(--font-body); font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--text-dim);
+}
+
+/* ── Tableau puissance ── */
+.table-wrap {
+  overflow-x: auto; margin-bottom: 2rem;
+  border: 1px solid var(--border); border-radius: 6px;
+}
+table { width: 100%; border-collapse: collapse; font-family: var(--font-data); }
+
+thead tr { background: #0f0f12; }
+thead th {
+  padding: 10px 10px; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: .1em;
+  text-align: center; border-bottom: 1px solid var(--border);
+}
+thead th.col-duree { text-align: left; color: var(--text-muted); }
+thead th.col-avant { color: var(--avant); }
+thead th.col-apres { color: var(--apres); }
+thead th.col-delta { color: var(--text-dim); }
+
+thead tr.subhead th {
+  font-size: 10px; padding: 3px 10px 7px;
+  border-bottom: 2px solid var(--border); font-weight: 400; letter-spacing: .05em;
+}
+thead tr.subhead th.col-avant { color: #3b6ea8; }
+thead tr.subhead th.col-apres { color: #a85a20; }
+thead tr.subhead th.col-delta { color: var(--text-dim); }
+
+tbody tr { border-bottom: 1px solid var(--border-soft); transition: background .1s; }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:hover { background: #16161b; }
+
+tbody tr.separator td {
+  padding: 0; height: 5px; background: #0f0f12;
+  border-bottom: 1px solid var(--border); border-top: 1px solid var(--border);
+}
+
+td { padding: 0; text-align: center; }
+td.cell-duree {
+  text-align: left; padding: 0 12px; font-size: 13px; font-weight: 500;
+  color: var(--text-muted); white-space: nowrap; min-width: 56px;
+}
+
+td input[type="number"] {
+  width: 100%; min-width: 68px; background: transparent;
+  border: none; border-left: 1px solid var(--border-soft);
+  color: var(--text); font-family: var(--font-data); font-size: 14px;
+  text-align: center; padding: 9px 4px; outline: none;
+  transition: background .15s; -moz-appearance: textfield;
+}
+td input[type="number"]::-webkit-inner-spin-button,
+td input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+td.avant-col input { color: var(--avant); }
+td.apres-col input { color: var(--apres); }
+td input[type="number"]:focus { background: #1c1c22; }
+td input[type="number"]::placeholder { color: var(--text-dim); }
+
+td.wkg {
+  font-size: 12px; padding: 9px 6px;
+  border-left: 1px solid var(--border-soft); min-width: 48px; color: var(--text-dim);
+}
+td.wkg.avant-kg { color: #3b6ea8; }
+td.wkg.apres-kg { color: #a85a20; }
+
+/* Colonne delta dans le tableau */
+td.delta-cell {
+  font-family: var(--font-data); font-size: 12px; font-weight: 600;
+  padding: 9px 6px; border-left: 1px solid var(--border-soft);
+  min-width: 52px; white-space: nowrap;
+}
+td.delta-cell.pos { color: var(--green); }
+td.delta-cell.neg { color: var(--red); }
+td.delta-cell.neutral { color: var(--text-dim); }
+
+/* ── Métriques ── */
+.metrics-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 1px; background: var(--border); border: 1px solid var(--border);
+  border-radius: 6px; overflow: hidden; margin-bottom: 2rem;
+}
+.metric-cell { background: var(--surface); padding: 14px 14px 12px; }
+.metric-label {
+  font-size: 10px; font-weight: 500; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--text-dim); margin-bottom: 10px;
+}
+.metric-row { display: flex; gap: 6px; align-items: flex-end; margin-bottom: 8px; }
+.metric-input-wrap { flex: 1; }
+.metric-input-wrap > span {
+  display: block; font-size: 9px; text-transform: uppercase;
+  letter-spacing: .07em; margin-bottom: 3px;
+}
+.metric-input-wrap.av > span { color: #3b6ea8; }
+.metric-input-wrap.ap > span { color: #a85a20; }
+
+.metric-input-wrap input {
+  width: 100%; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 3px; font-family: var(--font-data); font-size: 15px;
+  font-weight: 500; text-align: center; padding: 5px 4px; outline: none;
+  transition: border-color .15s; color: var(--text);
+}
+.metric-input-wrap.av input { color: var(--avant); }
+.metric-input-wrap.ap input { color: var(--apres); }
+.metric-input-wrap input:focus { border-color: var(--orange); }
+.metric-input-wrap input::placeholder { color: var(--text-dim); font-size: 12px; }
+
+/* Ligne W/kg calculée dans les métriques */
+.metric-wkg-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.metric-wkg-val {
+  flex: 1; text-align: center; font-family: var(--font-data);
+  font-size: 13px; padding: 3px 4px; border-radius: 3px;
+  background: var(--bg); border: 1px solid var(--border-soft);
+  min-height: 24px; line-height: 18px;
+}
+.metric-wkg-val.av { color: #3b6ea8; }
+.metric-wkg-val.ap { color: #a85a20; }
+.metric-wkg-label {
+  font-size: 9px; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--text-dim); text-align: center; margin-bottom: 2px;
+}
+
+/* Badge % évolution sous chaque métrique */
+.metric-delta {
+  font-family: var(--font-data); font-size: 12px; font-weight: 600;
+  min-height: 18px; text-align: center; padding: 2px 0;
+  border-radius: 3px; transition: all .2s;
+}
+.metric-delta.pos { color: var(--green); }
+.metric-delta.neg { color: var(--red); }
+.metric-delta.neutral { color: var(--text-dim); }
+
+/* ── Submit ── */
+.submit-area { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 10px; }
+.btn-submit {
+  background: var(--orange); color: #fff; border: none; border-radius: 4px;
+  font-family: var(--font-title); font-size: 1.1rem; letter-spacing: .1em;
+  padding: 13px 32px; cursor: pointer; transition: background .15s; align-self: flex-start;
+}
+.btn-submit:hover { background: var(--orange-light); }
+.submit-note { font-size: 12px; color: var(--text-dim); }
+.success-msg {
+  display: none; background: #0d2d1a; border: 1px solid #1e5e36;
+  border-radius: 6px; padding: 16px 20px; color: var(--green); font-size: 13px; margin-top: 1rem;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div class="eyebrow">Benjamin Baticle Coaching</div>
+    <h1>Profil de puissance</h1>
+    <p>Remplis les cases que tu connais - avant et/ou après la saison. Les W/kg et les pourcentages d'évolution se calculent automatiquement. Laisse vide ce que tu ne sais pas, Benjamin complètera depuis intervals.icu.</p>
+  </div>
+
+  <form id="profileForm">
+
+    <div class="identity">
+      <div class="field">
+        <label>Prénom *</label>
+        <input type="text" name="prenom" placeholder="Thomas" required>
+      </div>
+      <div class="field">
+        <label>Saison / Période</label>
+        <input type="text" name="saison" placeholder="ex : Saison 2024-2025">
+      </div>
+    </div>
+
+    <div class="poids-row">
+      <label>Poids de référence</label>
+      <input type="number" id="poids" name="poids" placeholder="72" min="40" max="130" step="0.1">
+      <span style="color:var(--text-dim);font-size:13px">kg</span>
+      <small>— nécessaire pour calculer les W/kg</small>
+      <span id="poids-warning">⚠ Renseigne ton poids pour voir les W/kg</span>
+    </div>
+
+    <!-- Tableau puissance -->
+    <div class="section-title">
+      Courbe de puissance
+      <span>durées clés · W et W/kg</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-duree" rowspan="2">Durée</th>
+            <th class="col-avant" colspan="2">Avant</th>
+            <th class="col-apres" colspan="2">Après</th>
+            <th class="col-delta" rowspan="2">Évolution</th>
+          </tr>
+          <tr class="subhead">
+            <th class="col-avant">W</th>
+            <th class="col-avant">W/kg</th>
+            <th class="col-apres">W</th>
+            <th class="col-apres">W/kg</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Métriques clés -->
+    <div class="section-title">
+      Métriques clés
+      <span>synthèse physiologique</span>
+    </div>
+
+    <div class="metrics-grid" id="metricsGrid"></div>
+
+    <div class="submit-area">
+      <button type="submit" class="btn-submit">Envoyer à Benjamin</button>
+      <p class="submit-note">Données envoyées directement à benjamin.baticle80@gmail.com</p>
+    </div>
+    <div class="success-msg" id="successMsg">
+      ✓ Profil envoyé avec succès. Benjamin te recontacte pour valider les données avant publication.
+    </div>
+
+  </form>
+</div>
+
+<script>
+// ─── Config durées ───────────────────────────────────────────────
+const DUREES = [
+  { label:'1s',    key:'d1s' },
+  { label:'5s',    key:'d5s' },
+  { label:'10s',   key:'d10s' },
+  { label:'15s',   key:'d15s' },
+  { label:'30s',   key:'d30s' },
+  { label:'1min',  key:'d1m' },
+  { label:'2min',  key:'d2m' },
+  { label:'3min',  key:'d3m' },
+  { label:'5min',  key:'d5m' },
+  { label:'8min',  key:'d8m' },
+  { label:'10min', key:'d10m' },
+  { label:'15min', key:'d15m' },
+  { label:'20min', key:'d20m', sep:true },
+  { label:'30min', key:'d30m' },
+  { label:'1h',    key:'d1h', sep:true },
+  { label:'2h',    key:'d2h' },
+  { label:'3h',    key:'d3h' },
+  { label:'4h',    key:'d4h' },
+  { label:'5h',    key:'d5h' },
+  { label:'5h30',  key:'d5h30' },
+  { label:'6h',    key:'d6h' },
+  { label:'7h',    key:'d7h' },
+];
+
+// ─── Config métriques (numériques → delta calculé, texte → libre) ──
+const METRICS = [
+  { key:'pma',   label:'PMA',        unit:'W',           numeric:true,  wkg:true, ph_av:'377',  ph_ap:'420'  },
+  { key:'ftp',   label:'FTP',        unit:'W',           numeric:true,  wkg:true, ph_av:'303',  ph_ap:'326'  },
+  { key:'vo2',   label:'VO₂max',     unit:'ml/min/kg',   numeric:true,  ph_av:'63.8', ph_ap:'66.5', step:'0.1' },
+  { key:'cs5',   label:'CS₅min',     unit:'kJ',          numeric:true,  ph_av:'2153', ph_ap:'2274' },
+  { key:'tpma',  label:'T_PMA',      unit:'durée',       numeric:false, ph_av:'5m56s',ph_ap:'6m30s'},
+  { key:'tte',   label:'TTE',        unit:'durée',       numeric:false, ph_av:'20m',  ph_ap:'25m'  },
+];
+
+// ─── Helpers ─────────────────────────────────────────────────────
+const poidsInput = document.getElementById('poids');
+const warning    = document.getElementById('poids-warning');
+
+function getPoids() { return parseFloat(poidsInput.value) || 0; }
+
+function wkg(watts) {
+  const p = getPoids();
+  if (!watts || !p) return null;
+  return (watts / p).toFixed(2);
+}
+
+function deltaPct(av, ap) {
+  if (!av || !ap || av === 0) return null;
+  return ((ap - av) / av * 100).toFixed(1);
+}
+
+function renderDelta(val, el) {
+  if (val === null) { el.textContent = '-'; el.className = 'delta-cell neutral'; return; }
+  const n = parseFloat(val);
+  const sign = n > 0 ? '+' : '';
+  el.textContent = sign + val + '%';
+  el.className = 'delta-cell ' + (n > 0 ? 'pos' : n < 0 ? 'neg' : 'neutral');
+}
+
+function renderMetricDelta(val, el) {
+  if (val === null) { el.textContent = ''; el.className = 'metric-delta neutral'; return; }
+  const n = parseFloat(val);
+  const sign = n > 0 ? '+' : '';
+  el.textContent = sign + val + '%';
+  el.className = 'metric-delta ' + (n > 0 ? 'pos' : n < 0 ? 'neg' : 'neutral');
+}
+
+// ─── Tableau ─────────────────────────────────────────────────────
+const tbody = document.getElementById('tableBody');
+
+DUREES.forEach(d => {
+  if (d.sep) {
+    const sep = document.createElement('tr');
+    sep.className = 'separator';
+    sep.innerHTML = '<td colspan="6"></td>';
+    tbody.appendChild(sep);
+  }
+
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="cell-duree">${d.label}</td>
+    <td class="avant-col"><input type="number" class="av-w" name="${d.key}_av" placeholder="-" min="0" max="3000"></td>
+    <td class="wkg avant-kg">-</td>
+    <td class="apres-col"><input type="number" class="ap-w" name="${d.key}_ap" placeholder="-" min="0" max="3000"></td>
+    <td class="wkg apres-kg">-</td>
+    <td class="delta-cell neutral">-</td>
+  `;
+  tbody.appendChild(tr);
+
+  const avInput  = tr.querySelector('.av-w');
+  const apInput  = tr.querySelector('.ap-w');
+  const avKgCell = tr.querySelector('.avant-kg');
+  const apKgCell = tr.querySelector('.apres-kg');
+  const deltaCell= tr.querySelector('.delta-cell');
+
+  function refreshRow() {
+    const av = parseFloat(avInput.value) || 0;
+    const ap = parseFloat(apInput.value) || 0;
+
+    // W/kg — affiche '-' si watts absents OU poids absent
+    const avWkg = wkg(av);
+    const apWkg = wkg(ap);
+    avKgCell.textContent = avWkg !== null ? avWkg : (av ? '—' : '-');
+    apKgCell.textContent = apWkg !== null ? apWkg : (ap ? '—' : '-');
+
+    // % évolution — seulement si les deux valeurs sont renseignées
+    renderDelta(av && ap ? deltaPct(av, ap) : null, deltaCell);
+  }
+
+  avInput.addEventListener('input', refreshRow);
+  apInput.addEventListener('input', refreshRow);
+  // Stocker refresh pour recalcul au changement de poids
+  tr._refresh = refreshRow;
+});
+
+poidsInput.addEventListener('input', () => {
+  const p = getPoids();
+  warning.style.display = p ? 'none' : 'inline-block';
+  tbody.querySelectorAll('tr:not(.separator)').forEach(tr => tr._refresh && tr._refresh());
+  // Recalculer W/kg PMA et FTP
+  document.querySelectorAll('#metricsGrid .metric-cell').forEach(cell => {
+    if (cell._refreshWkg) cell._refreshWkg();
+  });
+});
+
+// ─── Métriques ───────────────────────────────────────────────────
+const grid = document.getElementById('metricsGrid');
+
+METRICS.forEach(m => {
+  const cell = document.createElement('div');
+  cell.className = 'metric-cell';
+
+  const inputType = m.numeric ? 'number' : 'text';
+  const stepAttr  = m.step ? `step="${m.step}"` : '';
+
+  const wkgBlock = m.wkg ? `
+    <div class="metric-wkg-label">W / kg</div>
+    <div class="metric-wkg-row">
+      <div class="metric-wkg-val av empty" id="wkg_av_${m.key}">-</div>
+      <div class="metric-wkg-val ap empty" id="wkg_ap_${m.key}">-</div>
+    </div>` : '';
+
+  cell.innerHTML = `
+    <div class="metric-label">${m.label} <span style="color:var(--text-dim);font-weight:400">(${m.unit})</span></div>
+    <div class="metric-row">
+      <div class="metric-input-wrap av">
+        <span>Avant</span>
+        <input type="${inputType}" name="${m.key}_av" placeholder="${m.ph_av}" ${stepAttr}>
+      </div>
+      <div class="metric-input-wrap ap">
+        <span>Après</span>
+        <input type="${inputType}" name="${m.key}_ap" placeholder="${m.ph_ap}" ${stepAttr}>
+      </div>
+    </div>
+    ${wkgBlock}
+    <div class="metric-delta neutral" id="delta_${m.key}"></div>
+  `;
+
+  grid.appendChild(cell);
+
+  if (m.numeric) {
+    const avIn = cell.querySelector(`[name="${m.key}_av"]`);
+    const apIn = cell.querySelector(`[name="${m.key}_ap"]`);
+    const deltaEl = cell.querySelector(`#delta_${m.key}`);
+    const wkgAvEl = m.wkg ? cell.querySelector(`#wkg_av_${m.key}`) : null;
+    const wkgApEl = m.wkg ? cell.querySelector(`#wkg_ap_${m.key}`) : null;
+
+    function refreshMetric() {
+      const av = parseFloat(avIn.value);
+      const ap = parseFloat(apIn.value);
+
+      // W/kg PMA / FTP
+      if (m.wkg) {
+        const avWkg = wkg(av);
+        const apWkg = wkg(ap);
+        if (avWkg) { wkgAvEl.textContent = avWkg; wkgAvEl.classList.remove('empty'); }
+        else        { wkgAvEl.textContent = '-';   wkgAvEl.classList.add('empty'); }
+        if (apWkg) { wkgApEl.textContent = apWkg; wkgApEl.classList.remove('empty'); }
+        else        { wkgApEl.textContent = '-';   wkgApEl.classList.add('empty'); }
+      }
+
+      // % évolution — seulement si les deux sont renseignés et valides
+      if (avIn.value !== '' && apIn.value !== '' && !isNaN(av) && !isNaN(ap) && av > 0) {
+        renderMetricDelta(deltaPct(av, ap), deltaEl);
+      } else {
+        deltaEl.textContent = '';
+        deltaEl.className = 'metric-delta neutral';
+      }
+    }
+
+    avIn.addEventListener('input', refreshMetric);
+    apIn.addEventListener('input', refreshMetric);
+    // Exposer pour recalcul depuis le poids
+    if (m.wkg) cell._refreshWkg = refreshMetric;
+  }
+});
+
+// ─── Soumission ──────────────────────────────────────────────────
+document.getElementById('profileForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const fd = new FormData(this);
+  const obj = {};
+  fd.forEach((v, k) => { if (v && v.toString().trim()) obj[k] = v; });
+
+  // Ajouter W/kg et % calculés dans l'email
+  const p = getPoids();
+  if (p) {
+    DUREES.forEach(d => {
+      const av = parseFloat(obj[d.key + '_av']);
+      const ap = parseFloat(obj[d.key + '_ap']);
+      if (av) obj[d.key + '_av_wkg'] = (av / p).toFixed(2);
+      if (ap) obj[d.key + '_ap_wkg'] = (ap / p).toFixed(2);
+      if (av && ap) obj[d.key + '_evolution'] = deltaPct(av, ap) + '%';
+    });
+  }
+  METRICS.filter(m => m.numeric).forEach(m => {
+    const av = parseFloat(obj[m.key + '_av']);
+    const ap = parseFloat(obj[m.key + '_ap']);
+    if (av && ap) obj[m.key + '_evolution'] = deltaPct(av, ap) + '%';
+    if (m.wkg && p) {
+      if (av) obj[m.key + '_av_wkg'] = (av / p).toFixed(2);
+      if (ap) obj[m.key + '_ap_wkg'] = (ap / p).toFixed(2);
+    }
+  });
+
+  try {
+    const res = await fetch('https://formsubmit.co/ajax/benjamin.baticle80@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: `Profil de puissance - ${obj.prenom || 'Coachy'} ${obj.saison || ''}`,
+        _template: 'table',
+        ...obj
+      })
+    });
+    if (res.ok) {
+      document.getElementById('successMsg').style.display = 'block';
+      this.querySelector('.btn-submit').style.display = 'none';
+      this.querySelector('.submit-note').style.display = 'none';
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    } else {
+      alert("Erreur lors de l'envoi. Réessaie ou contacte Benjamin directement.");
+    }
+  } catch(err) {
+    alert("Erreur réseau. Vérifie ta connexion et réessaie.");
+  }
+});
+</script>
+</body>
+</html>
